@@ -1,0 +1,318 @@
+// Polymorph øvelse 
+#include <iostream>
+using namespace std;
+
+// En klasse ved navn Hello
+class Hello {
+	public:
+	// En metode der skriver en besked – denne metode kan overskrives i en subklasse
+	void hello () {
+		cout << "Hello from the base"; // Udskriver en besked fra "base"-klassen
+	}
+};
+
+// En klasse der arver offentligt fra Hello
+class HelloAgain : public Hello {
+	public:
+	// Overskriver hello()-metoden fra base-klassen
+	void hello () {
+		cout << "Hello from the sub"; // Udskriver en anden besked
+	}
+};
+
+int main () {
+	HelloAgain h1;   // Opretter et objekt af HelloAgain
+	h1.hello();      // Kalder hello(), men da HelloAgain har sin egen version,
+	                 // er det den der bliver brugt: "Hello from the sub"
+}
+
+// Inheritance øvelse 
+
+#include <iostream>
+using namespace std;
+
+// Superklasse (base class)
+class ClassA {
+	public: 
+	int diff; // Et offentligt medlem, der skal holde forskellen
+
+	// En funktion, der beregner forskellen mellem to tal
+	void subtract(int num1, int num2){
+		diff = num1 - num2;
+	}
+};
+
+// Subklasse (derived class) der arver fra ClassA
+class ClassB : public ClassA {
+	public:
+	
+	// En funktion, der viser resultatet (altså diff) i konsollen
+	void showDiff(){
+		cout << diff;
+	}
+};
+
+int main() {
+	ClassB u;             // Opretter et objekt af ClassB
+	u.subtract(888, 333); // Kalder subtract() som blev arvet fra ClassA
+	u.showDiff();         // Kalder showDiff() som findes i ClassB
+
+	// Output bliver: 555
+}
+
+//Destructor øvelse 
+
+#include <iostream>
+using namespace std;
+
+// Definerer en klasse kaldet Hejdestructor
+class Hejdestructor {
+	public: 
+	
+	string navn; // Et offentligt medlemsfelt til at holde navnet
+	
+	// Konstruktør – kaldes når objektet oprettes
+	Hejdestructor(string n) {
+		navn = n; // Sætter medlemsvariablen til det angivne navn
+		cout << "Hej " << navn << "\n";
+	}
+	
+	// Destruktør – kaldes automatisk, når objektet slettes eller går ud af scope
+	~Hejdestructor() {
+		cout << "Du er slettet";
+	}
+};
+
+int main() {
+
+	Hejdestructor Hej("Ulrik"); // Opretter objektet og kalder konstruktøren
+
+	// Når main() slutter, kaldes destruktøren automatisk
+}
+
+//Constructor øvelse 
+
+#include <iostream>
+using namespace std;
+
+// Definerer en klasse ved navn Hejconstructor
+class Hejconstructor { 
+	public: 
+	int num; // Et offentligt heltalsmedlem, der holder på tallet givet til konstruktøren
+
+	// Konstruktør – den kaldes automatisk, når et objekt af klassen oprettes
+	Hejconstructor(int n) {
+		num = n; // Gemmer den givne værdi i klassens medlemsvariabel
+		cout << "Hej for den " << num << " gang!"; // Skriver en besked ud
+	}
+};
+
+int main() {
+
+	// Opretter et objekt af typen Hejconstructor og sender tallet 8 med
+	// Dette kalder konstruktøren og udskriver: "Hej for den 8 gang!"
+	Hejconstructor Hej(8); 
+
+	return 0;
+}
+
+//Class og objekt øvelse:
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Studerende{
+	public:
+	
+	int ucl_nummer;
+	string navn;
+	
+	void getInfo(int nmr, string nvn){
+		this->ucl_nummer= nmr;
+		this->navn = nvn;
+		}
+		
+	void showInfo(){
+		cout << "Navn: " << navn << " | UCL ID: " << ucl_nummer << endl; 
+	}
+};	
+
+int main () {
+	
+	Studerende studerende1; //Class og objekt
+	studerende1.getInfo(67056, "Ulrik");
+	studerende1.showInfo();
+
+	    return 0;
+}
+
+//Class øvelse:
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Studerende{
+	public:
+	
+	int ucl_nummer;
+	string navn;
+	
+	void getInfo(int nmr, string nvn){
+		this->ucl_nummer= nmr;
+		this->navn = nvn;
+		}
+		
+	void showInfo(){
+		cout << "Navn: " << navn << "UCL ID: " << ucl_nummer << endl; 
+	}
+};	
+
+int main () {
+	
+	Studerende s;
+	string navn;
+	int ucl_nummer;
+	
+	
+	
+	cout << "Navn" << endl; 
+	cin >> navn;
+	cout << "UCL ID" << endl;
+	cin >> ucl_nummer;
+	
+	s.getInfo(ucl_nummer, navn);
+	s.showInfo();
+	
+	    return 0;
+}
+
+//Switch case karakter eksempel 
+
+#include <iostream>
+using namespace std;
+int main ( )
+{
+	int karakter = 10;
+	
+	switch (karakter) {
+		case 12:
+		cout << "Fantastisk" << endl;
+		break;
+		
+		case 10: 
+		case 7: 
+		cout << "Godt arbejde" << endl;
+		break;
+		
+		case 4:
+		case 2:
+		cout << "Du bestod" << endl; 
+		break; 
+		
+		case 0:
+		case -3:
+		cout << "Kom igen" << endl;
+		break;
+		
+		default :
+		cout << "Ugyldig karakter" << endl;
+		}
+	
+	cout << "Din karakter er " << karakter << endl;
+	
+	return 0;
+	}
+
+//Array index øvelse
+
+#include <iostream>
+using namespace std;
+
+int main() {
+    
+  int hold_num[5]={8,18,28,38,48};
+  
+  for( int i = 0; i < 5; i++) {
+  	cout << "Elementet i indexet " << i << " er " << hold_num[i] << endl;
+    }
+    return 0;
+}
+
+While loop
+
+#include <iostream>
+using namespace std;
+int main ( )
+{
+	int a = 10;
+	
+	while(a<20){
+		cout << "a's antal" << a << endl;
+		a++; // kort for a = a +1
+		}
+		
+	return 0;
+	}
+
+
+// Større tal funktionsøvelse
+#include <iostream>
+using namespace std;
+
+int resultat; // Global variable 
+
+int stor(int num1, int num2){ // Funktion stor
+    if (num1 > num2) {
+        resultat = num1;
+    }  
+   else if (num1 == num2) {
+        cout << "Even Stephen" << endl;
+        resultat = num1;
+    } 
+  else {
+        resultat = num2;
+    }
+    
+    return resultat;
+}
+
+int main() { // Funktion main
+    int num1, num2;
+
+    cout << "Indtast første tal" << endl;
+    cin >> num1;
+
+    cout << "Indtast andet tal" << endl;
+    cin >> num2;
+
+    stor(num1, num2);  // Kalder funktionen
+
+    cout << "Det store tal er " << resultat << endl;
+
+    return 0;
+}
+
+//String øvelse 
+#include <iostream>
+#include <string>
+using namespace std;
+
+int main () {
+	string str1 = "Hello";
+	string str2 = "World";
+	string str3;
+	
+	int len;
+	
+	str3 = str1; // Kopiere str1 ind i str3
+	cout << "Copy (str3, str1):" << str3 << endl;
+	
+	str1 += str2; // Sammentrækker str1 og str2
+	cout << "Concatenate (str1, str2):" << str1 << endl;
+	
+	len = str1.length( );
+	cout << "Lenght (str1):" << len << endl;
+    return 0;
+}
