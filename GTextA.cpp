@@ -1,3 +1,4 @@
+// GTextA ver. 0.5
 #include <iostream>
 #include <string>
 #include <chrono>
